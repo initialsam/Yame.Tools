@@ -20,5 +20,24 @@ namespace Yame.Tools.Extensions
             var value = controllerName.Substring(0, controllerName.LastIndexOf(key));
             return value;
         }
+
+        public static bool HasEnglish(this String Input)
+        {
+            foreach (var item in Input.ToCharArray())
+            {
+                if (char.IsLower(item) || char.IsUpper(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool IsNumber(this String aNumber)
+        {
+            int n;
+            bool isNumeric = int.TryParse(aNumber, out n);
+            return isNumeric;
+        }
     }
 }

@@ -175,5 +175,25 @@ namespace Yame.Tools.Helper
             startTime = DateTimeHelper.SetDayofFirstSecBySevenAm(startTime);
             endTime = DateTimeHelper.SetDayofLastSecByBySevenAm(endTime);
         }
+
+        /// <summary>
+        /// 無條件捨去取最近的前一個 15分鐘刻度的時間。(ex. 9:10 => 9:00、 9:16 => 9:15)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static DateTime TimeRoundDown(DateTime input)
+        {
+            return new DateTime(input.Year, input.Month, input.Day, input.Hour, input.Minute, 0).AddMinutes(-input.Minute % 15);
+        }
+
+        /// <summary>
+        /// 無條件捨去取最近的前一個 5分鐘刻度的時間。(ex. 9:10 => 9:05、 9:16 => 9:15)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static DateTime TimeRoundDown5Min(DateTime input)
+        {
+            return new DateTime(input.Year, input.Month, input.Day, input.Hour, input.Minute, 0).AddMinutes(-input.Minute % 5);
+        }
     }
 }

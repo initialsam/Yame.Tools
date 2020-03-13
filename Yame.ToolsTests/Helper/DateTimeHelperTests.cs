@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Yame.Tools.Helper;
 
+
 namespace Yame.ToolsTests.Helper
 {
     [TestClass()]
@@ -145,6 +146,29 @@ namespace Yame.ToolsTests.Helper
             var expected = 20;
             //Act
             var actual = DateTimeHelper.GetAge(today, birthday);
+            //Assert
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod()]
+        public void 無條件捨去取最近的前一個15分鐘刻度的時間()
+        {
+            //Arrange
+            var input = new DateTime(2020, 1, 1,9,14,0);
+            var expected = new DateTime(2020, 1, 1, 9, 0, 0);
+            //Act
+            var actual = DateTimeHelper.TimeRoundDown(input);
+            //Assert
+            actual.Should().Be(expected);
+        }
+        [TestMethod()]
+        public void 無條件捨去取最近的前一個5分鐘刻度的時間()
+        {
+            //Arrange
+            var input = new DateTime(2020, 1, 1, 9, 14, 0);
+            var expected = new DateTime(2020, 1, 1, 9, 10, 0);
+            //Act
+            var actual = DateTimeHelper.TimeRoundDown5Min(input);
             //Assert
             actual.Should().Be(expected);
         }
