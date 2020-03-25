@@ -14,6 +14,34 @@ namespace Yame.FeatureTests
     public class IEnumerableIEqualityComparer
     {
         [TestMethod]
+        public void Test_Yield()
+        {
+            int[] a = { 1, 2, 3, 4, 5 };
+
+            foreach (int n in GreaterThan(a, 3))
+            {
+                Console.WriteLine(n);// 4 5
+            }
+
+            /*
+	        public static IEnumerable<int> GreaterThan(int[] arr, int gt){
+		        List<int> temp = new List<int>();
+		        foreach (int n in arr) {
+			        if (n > gt) temp.Add(n);
+		        }
+		        return temp;
+	        }*/
+
+            IEnumerable<int> GreaterThan(int[] arr, int gt)
+            {
+                foreach (int n in arr)
+                {
+                    if (n > gt) yield return n;
+                }
+            }
+        }
+
+        [TestMethod]
         public void Test_IEnumerableYield()
         {
             //Ref https://www.facebook.com/91agile/videos/1408194006021880

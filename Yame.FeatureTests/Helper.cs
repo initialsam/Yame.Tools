@@ -11,5 +11,10 @@ namespace Yame.FeatureTests
             string[] vals = fullName.Split(' ');
             return (vals[0], vals[1]);
         }
+
+        public static StringBuilder AppendWhen(
+          this StringBuilder sb,
+          string value,
+          bool predicate) => predicate ? sb.Append(value) : sb;
     }
 }
