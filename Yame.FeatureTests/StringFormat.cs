@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Yame.FeatureTests
     public class StringFormat
     {
         [TestMethod]
-        public void Test_StringFormat_1()
+        public void Test_StringFormat_value()
         {
             var dateTime = new DateTime(2020, 12, 31, 23, 59, 59);
             
@@ -69,6 +70,48 @@ namespace Yame.FeatureTests
             Console.WriteLine($"{dateTime:zzz}");//+08:00
             Console.WriteLine($"{dateTime:yyyy-MM-dd hh:mm:ss}");//2020-12-31 11:59:59
 
+        }
+
+        [TestMethod]
+        public void Test_ToString_ThreeParkFormat()
+        {
+            //Arrange
+            var a = 1; //大於0
+            var b = "AAA #;BBB -#;ccc";
+            var expected = "AAA 1";
+            //Act
+            var actual = a.ToString(b);
+            //Assert
+            actual.Should().Be(expected);
+
+            a = -1;//小於0
+            expected = "BBB -1";
+            actual = a.ToString(b);
+            actual.Should().Be(expected);
+
+            a = 0;//等於0
+            expected = "ccc";
+            actual = a.ToString(b);
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod]
+        public void Test_ToString_Format()
+        {
+            string[] names = { "Adam", "Bridgette", "Carla", "Daniel" };
+            decimal[] hours = { 40, 6.667m, 40.39m, 82 };
+
+            Console.WriteLine("{0,-20} {1,5}\n", "Name", "Hours");
+            for (int ctr = 0; ctr < names.Length; ctr++)
+                Console.WriteLine("{0,-20} {1,5:N1}", names[ctr], hours[ctr]);
+
+            // The example displays the following output:
+            //       Name                 Hours
+            //
+            //       Adam                  40.0
+            //       Bridgette              6.7
+            //       Carla                 40.4
+            //       Daniel                82.0
         }
     }
 }
