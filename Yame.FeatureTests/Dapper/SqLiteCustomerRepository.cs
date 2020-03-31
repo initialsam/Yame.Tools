@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 
 namespace Yame.FeatureTests.Dapper
 {
@@ -117,7 +118,12 @@ namespace Yame.FeatureTests.Dapper
                     new Customer{ FirstName = "B",LastName="2", DateOfBirth=DateTime.Now},
                     new Customer{ FirstName = "C",LastName="3", DateOfBirth=DateTime.Now}
                 };
-                cnn.Execute(sql, datas);
+                //大量資料時 交易會提高效能
+                using (var tran = cnn.BeginTransaction())
+                {
+                    cnn.Execute(sql, datas, tran);
+                    tran.Commit();
+                }
 
                 sql = @"
                     UPDATE Customer SET FirstName=@FirstName WHERE LastName=@LastName
@@ -128,10 +134,10 @@ namespace Yame.FeatureTests.Dapper
                     new Customer{ FirstName = "BB",LastName="2"},
                     new Customer{ FirstName = "CC",LastName="3"}
                 };
-                //交易
+                //大量資料時 交易會提高效能
                 using (var tran = cnn.BeginTransaction())
                 {
-                    cnn.Execute(sql, datas);
+                    cnn.Execute(sql, datas, tran);
                     tran.Commit();
                 }
                 
@@ -154,32 +160,40 @@ namespace Yame.FeatureTests.Dapper
                 };
                 cnn.Execute(sql, datas);
 
-               
-
                 sql = @"
                     SELECT  Id, FirstName, LastName, DateOfBirth
                     FROM    Customer
                 ";
                 list = cnn.Query<Customer>(sql).ToList();
                 noData = list.Any() == false;
-                /*
-                Stored Procedure
-                using (SqlConnection conn = new SqlConnection(strConnection))
-                {
-	                //準備參數
-	                DynamicParameters parameters = new DynamicParameters();
-	                parameters.Add("@Param1", "abc",DbType.String, ParameterDirection.Input);
-	                parameters.Add("@OutPut1", dbType: DbType.Int32,direction: ParameterDirection.Output);
-	                parameters.Add("@Return1", dbType: DbType.Int32,direction: ParameterDirection.ReturnValue);
-	                conn.Execute("MyStoredProcedure", parameters, commandType: CommandType.StoredProcedure);
-	                //接回Output值
-	                int outputResult = parameters.Get<int> ("@OutPut1");
-	                //接回Return值
-	                int returnResult = parameters.Get<int> ("@Return1");
-                }
-                */
-
             }
+
+            //交易
+            using (var tranScope = new TransactionScope())
+            {
+                using (var cnn = SimpleDbConnection())
+                {
+                   //TODO
+                }
+                tranScope.Complete();
+            }
+
+            /*
+              Stored Procedure
+              using (SqlConnection conn = new SqlConnection(strConnection))
+              {
+                  //準備參數
+                  DynamicParameters parameters = new DynamicParameters();
+                  parameters.Add("@Param1", "abc",DbType.String, ParameterDirection.Input);
+                  parameters.Add("@OutPut1", dbType: DbType.Int32,direction: ParameterDirection.Output);
+                  parameters.Add("@Return1", dbType: DbType.Int32,direction: ParameterDirection.ReturnValue);
+                  conn.Execute("MyStoredProcedure", parameters, commandType: CommandType.StoredProcedure);
+                  //接回Output值
+                  int outputResult = parameters.Get<int> ("@OutPut1");
+                  //接回Return值
+                  int returnResult = parameters.Get<int> ("@Return1");
+              }
+              */
         }
 
         private static void CreateDatabase()
