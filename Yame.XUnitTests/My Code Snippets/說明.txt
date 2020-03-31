@@ -1,0 +1,4 @@
+﻿Snippet Designer
+https://marketplace.visualstudio.com/items?itemName=vs-publisher-2795.SnippetDesigner
+
+工具 => 程式碼片段管理員
