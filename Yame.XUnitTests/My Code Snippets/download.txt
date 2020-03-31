@@ -1,0 +1,2 @@
+﻿Snippet Designer
+https://marketplace.visualstudio.com/items?itemName=vs-publisher-2795.SnippetDesigner
