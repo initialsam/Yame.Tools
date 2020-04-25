@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yame.ToolsTests", "Yame.Too
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yame.FeatureTests", "Yame.FeatureTests\Yame.FeatureTests.csproj", "{AA08C0C2-E23D-4188-8B31-FBC40C7C9B9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yame.XUnitTests", "Yame.XUnitTests\Yame.XUnitTests.csproj", "{FEFDCAAD-4E61-47D9-8361-8DF0F5BBA996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yame.XUnitTests", "Yame.XUnitTests\Yame.XUnitTests.csproj", "{FEFDCAAD-4E61-47D9-8361-8DF0F5BBA996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.csproj", "{C9435F93-2752-4554-85CE-307C7E223031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FEFDCAAD-4E61-47D9-8361-8DF0F5BBA996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFDCAAD-4E61-47D9-8361-8DF0F5BBA996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEFDCAAD-4E61-47D9-8361-8DF0F5BBA996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9435F93-2752-4554-85CE-307C7E223031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9435F93-2752-4554-85CE-307C7E223031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9435F93-2752-4554-85CE-307C7E223031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9435F93-2752-4554-85CE-307C7E223031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
