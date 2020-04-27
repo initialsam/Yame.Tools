@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
     <script src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="/signalr/hubs"></script>
 
@@ -24,6 +24,9 @@
             };
             chat.client.joinRoom = function (messageId, userId) {
                 $('#roomInfo').append('<li>messageId:' + messageId + ',userId:' + userId + '</li>');
+            };
+            chat.client.connected = function (ConnectionId) {
+                $('#OnConnected').append('<li>ConnectionId:' + ConnectionId + '</li>');
             };
 
             $.connection.hub.qs = { "MessageId": "ABc", "UserId": 456 }
@@ -76,6 +79,8 @@
         <input type="button" class="btn btn-default" id="sendmessage" value="送出" />
     </p>
     <p>
+        <ul id="OnConnected"></ul>
+        <hr />
         <ul id="roomInfo"></ul>
         <hr />
         <ul id="oldMessages"></ul>

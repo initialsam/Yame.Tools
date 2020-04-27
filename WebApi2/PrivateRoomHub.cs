@@ -67,24 +67,26 @@ namespace WebApi2
             public override Task OnConnected()
             {
 
-                var messageId = Context.QueryString[nameof(JoinRoomModel.MessageId)];
-                var userId = Context.QueryString[nameof(JoinRoomModel.UserId)];
+                //var messageId = Context.QueryString[nameof(JoinRoomModel.MessageId)];
+                //var userId = Context.QueryString[nameof(JoinRoomModel.UserId)];
 
                 //var messageId = Context.QueryString["MessageId"];
                 //var userId = Context.QueryString["UserId"];
-
+                Clients.All.connected(Context.ConnectionId);
                 return base.OnConnected();
             }
 
             public override Task OnDisconnected(bool stopCalled)
             {
-                var messageId = Context.QueryString[nameof(JoinRoomType.MessageId)];
-                var userId = Context.QueryString[nameof(JoinRoomType.UserId)];
+                //var messageId = Context.QueryString[nameof(JoinRoomType.MessageId)];
+                //var userId = Context.QueryString[nameof(JoinRoomType.UserId)];
 
                 //var messageId = Context.QueryString["MessageId"];
                 //var userId = Context.QueryString["UserId"];
 
                 //Context.ConnectionId
+
+
                 return base.OnDisconnected(stopCalled);
             }
 
