@@ -58,7 +58,9 @@ namespace WebApi2
             privateRoomHub = 2
         }
 
+       
         [HubName(nameof(JoinRoomType.privateRoomHub))]
+        [AuthorizeClaims]
         //[HubName("privateRoomHub")]
         public class PrivateRoomHub : Hub
         {
@@ -69,11 +71,30 @@ namespace WebApi2
 
                 //var messageId = Context.QueryString[nameof(JoinRoomModel.MessageId)];
                 //var userId = Context.QueryString[nameof(JoinRoomModel.UserId)];
+                string messageId = GetMessageId();
 
-                //var messageId = Context.QueryString["MessageId"];
                 //var userId = Context.QueryString["UserId"];
-                Clients.All.connected(Context.ConnectionId);
+                var name = Context.Headers["name"];
+                var transport = Context.QueryString.First(p => p.Key == "transport").Value;
+                Clients.All.connected($"OnConnected ConnectionId:{Context.ConnectionId} , Transport : {transport} , name : {name}");
+                Groups.Add(Context.ConnectionId, messageId);
+
                 return base.OnConnected();
+            }
+            public override Task OnReconnected()
+            {
+                string messageId = GetMessageId();
+                var name = Context.Headers["name"];
+                Clients.All.connected($"OnReconnected ConnectionId:{Context.ConnectionId}, name : {name}");
+                Groups.Add(Context.ConnectionId, messageId);
+                return base.OnReconnected();
+            }
+
+            private string GetMessageId()
+            {
+                var messageId = Context.Headers["MessageId"];
+                messageId = Context.QueryString["MessageId"];
+                return messageId;
             }
 
             public override Task OnDisconnected(bool stopCalled)
@@ -83,18 +104,29 @@ namespace WebApi2
 
                 //var messageId = Context.QueryString["MessageId"];
                 //var userId = Context.QueryString["UserId"];
-
+                string messageId = GetMessageId();
                 //Context.ConnectionId
-
-
+                var name = Context.Headers["name"];
+                Clients.All.connected($"OnDisconnected ConnectionId:{Context.ConnectionId}, name : {name}");
+                Groups.Remove(Context.ConnectionId, messageId);
                 return base.OnDisconnected(stopCalled);
+            }
+            /// <summary>
+            /// 加入聊天室
+            /// </summary>
+            [HubMethodName("TestA")]
+            public void TestA()
+            {
+                Clients.All.connected($"ConnectionId:{Context.ConnectionId},TestA");
             }
 
             /// <summary>
             /// 加入聊天室
             /// </summary>
+            [HubMethodName("JoinRoom")]
             public void JoinRoom(string messageId, int userId)
             {
+                //string messageId = GetMessageId();
                 var commentAccount = new CommentAccount
                 {
                     Account = userId,
@@ -102,15 +134,19 @@ namespace WebApi2
                     CommentAccountType = CommentAccountType.PostAccount
                 };
                 var connectionIds = GetConnectionIdList(messageId, commentAccount);
-
-                Clients.Clients(connectionIds).joinRoom(messageId, userId);
+                //Clients.All.connected($"ConnectionId:{Context.ConnectionId},messageId:{messageId},int userId:{userId}");
+                //Clients.Clients(connectionIds).joinRoom(messageId, $"int userId:{userId}");
+                Clients.Group(messageId).joinRoom(messageId, $"int userId:{userId}");
             }
+
+           
             public void Broadcast(string messageId, int userId, string comment)
             {
                 FakeCommentInfo result = new FakeCommentInfo { AccountID = userId, Name = userId.ToString(), Comment = comment, CreateDate = DateTime.Now };
                 var json = JsonConvert.SerializeObject(result);
                 var connectionIds = GetConnectionIdList(messageId);
-                Clients.Clients(connectionIds).sendMessage(json);
+                //Clients.Clients(connectionIds).sendMessage(json);
+                Clients.Group(messageId).sendMessage(json);
                 //Clients.All.showmessage(json);
             }
 
