@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
     <script src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="/signalr/hubs"></script>
 
@@ -25,15 +25,25 @@
             chat.client.joinRoom = function (messageId, userId) {
                 $('#roomInfo').append('<li>messageId:' + messageId + ',userId:' + userId + '</li>');
             };
-
-            $.connection.hub.qs = { "MessageId": "ABc", "UserId": 456 }
-            $.connection.hub.start().done(function () {
+            chat.client.connected = function (ConnectionId) {
+                $('#OnConnected').append('<li>' + ConnectionId + '</li>');
+            };
+            //transport: transType
+            $.connection.hub.qs = { "MessageId": "abc", "UserId": 456 }
+            /*
+            "webSockets"
+            "foreverFrame"
+            "serverSentEvents"
+            "longPolling"
+            */
+            $.connection.hub.start({ transport: "webSockets" }).done(function () {
                 //chat.server.joinRoom($('#MessageId').val(), $('#UserId').val());
 
             });
 
             $('#joinRoom').click(function () {
-                chat.server.joinRoom($('#MessageId').val(), $('#UserId').val());
+                chat.server.TestA();
+                chat.server.JoinRoom($('#MessageId').val(), $('#UserId').val());
             });
 
             $('#sendmessage').click(function () {
@@ -76,6 +86,8 @@
         <input type="button" class="btn btn-default" id="sendmessage" value="送出" />
     </p>
     <p>
+        <ul id="OnConnected"></ul>
+        <hr />
         <ul id="roomInfo"></ul>
         <hr />
         <ul id="oldMessages"></ul>
