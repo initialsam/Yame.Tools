@@ -13,8 +13,8 @@ namespace WebApi2
     {
         public void Configuration(IAppBuilder app)
         {
-            //app.MapSignalR();
-            app.MapAzureSignalR("eva01");
+            app.MapSignalR();
+            //app.MapAzureSignalR("eva01");
         }
     }
 }

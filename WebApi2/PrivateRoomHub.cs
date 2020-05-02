@@ -60,7 +60,7 @@ namespace WebApi2
 
        
         [HubName(nameof(JoinRoomType.privateRoomHub))]
-        [AuthorizeClaims]
+        //[AuthorizeClaims]
         //[HubName("privateRoomHub")]
         public class PrivateRoomHub : Hub
         {
