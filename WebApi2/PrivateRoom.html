@@ -36,7 +36,7 @@
             "serverSentEvents"
             "longPolling"
             */
-            $.connection.hub.start({ transport: "webSockets" }).done(function () {
+            $.connection.hub.start().done(function () {
                 //chat.server.joinRoom($('#MessageId').val(), $('#UserId').val());
 
             });
@@ -48,6 +48,8 @@
 
             $('#sendmessage').click(function () {
                 chat.server.broadcast($('#MessageId').val(), $('#UserId').val(), $('#Comment').val());
+                $.connection.hub.stop();
+
             });
         });
 

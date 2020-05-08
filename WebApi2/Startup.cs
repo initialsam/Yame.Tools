@@ -17,6 +17,7 @@ namespace WebApi2
             //GlobalHost.DependencyResolver.UseRedis("127.0.0.1", 6379, null, "PrivateRoomHub");
             GlobalHost.DependencyResolver.UseStackExchangeRedis("127.0.0.1", 6379, null, "AppName");
             app.MapSignalR();
+            //app.MapAzureSignalR("eva01");
         }
     }
 }
