@@ -1,0 +1,69 @@
+SignalR.RedisMessageBus Information: 0 : Connecting...
+SignalR.RedisMessageBus Information: 0 : Connection opened
+SignalR.RedisMessageBus Verbose: 0 : Subscribed to event AppName
+SignalR.RedisMessageBus Information: 0 : Opening stream.
+SignalR.ScaleoutMessageBus Information: 0 : Stream(0) - Changed state from Initial to Open
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 16, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 16: '{"WaitForAck":false,"Id":"81acb2cf-6758-4e7e-a1c6-c1238b6a2b0b","CommandType":0,"Value":null}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 16, stream : 0, eventKey: 'c-0ab40947-77be-40a8-b7ef-9830e9667618' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: c-0ab40947-77be-40a8-b7ef-9830e9667618
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 17, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 17: '{"H":"privateRoomHub","M":"connected","A":["OnConnected ConnectionId:0ab40947-77be-40a8-b7ef-9830e9667618 , Transport : webSockets , name : "]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 17, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 18, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 18: '{"WaitForAck":true,"Id":"97fd445b-abcd-4b73-900a-4a01482ccbae","CommandType":1,"Value":"hg-privateRoomHub.abc"}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 18, stream : 0, eventKey: 'c-0ab40947-77be-40a8-b7ef-9830e9667618' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: c-0ab40947-77be-40a8-b7ef-9830e9667618
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 19, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 19: '' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 19, stream : 0, eventKey: '__SIGNALR__SERVER__' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: __SIGNALR__SERVER__
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 20, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 20: '{"WaitForAck":false,"Id":"fe48fa67-84af-4b33-813a-48b288f893ad","CommandType":0,"Value":null}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 20, stream : 0, eventKey: 'c-6168c356-76d2-4dc7-a9eb-ac4c1a491633' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: c-6168c356-76d2-4dc7-a9eb-ac4c1a491633
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 21, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 21: '{"H":"privateRoomHub","M":"connected","A":["OnConnected ConnectionId:6168c356-76d2-4dc7-a9eb-ac4c1a491633 , Transport : webSockets , name : "]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 21, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 22, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 22: '{"WaitForAck":true,"Id":"78cc36ba-493f-469c-a53c-cec959cc5841","CommandType":1,"Value":"hg-privateRoomHub.abc"}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 22, stream : 0, eventKey: 'c-6168c356-76d2-4dc7-a9eb-ac4c1a491633' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: c-6168c356-76d2-4dc7-a9eb-ac4c1a491633
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 23, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 23: '' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 23, stream : 0, eventKey: '__SIGNALR__SERVER__' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: __SIGNALR__SERVER__
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 24, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 24: '{"H":"privateRoomHub","M":"connected","A":["ConnectionId:6168c356-76d2-4dc7-a9eb-ac4c1a491633,TestA"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 24, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 2
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 25, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 25: '{"H":"privateRoomHub","M":"joinRoom","A":["A","int userId:1"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 25, stream : 0, eventKey: 'hg-privateRoomHub.A' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: hg-privateRoomHub.A
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 26, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 26: '{"H":"privateRoomHub","M":"connected","A":["ConnectionId:0ab40947-77be-40a8-b7ef-9830e9667618,TestA"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 26, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 3
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 27, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 27: '{"H":"privateRoomHub","M":"joinRoom","A":["A","int userId:1"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 27, stream : 0, eventKey: 'hg-privateRoomHub.A' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: hg-privateRoomHub.A
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 28, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 28: '{"H":"privateRoomHub","M":"connected","A":["ConnectionId:0ab40947-77be-40a8-b7ef-9830e9667618,TestA"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 28, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 4
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 29, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 29: '{"H":"privateRoomHub","M":"joinRoom","A":["abc","int userId:1"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 29, stream : 0, eventKey: 'hg-privateRoomHub.abc' saved with local id: 0
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: hg-privateRoomHub.abc
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 30, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 30: '{"H":"privateRoomHub","M":"connected","A":["ConnectionId:6168c356-76d2-4dc7-a9eb-ac4c1a491633,TestA"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 30, stream : 0, eventKey: 'h-privateRoomHub' saved with local id: 5
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: h-privateRoomHub
+SignalR.ScaleoutMessageBus Information: 0 : OnReceived(0, 31, 1)
+SignalR.ScaleoutMessageBus Verbose: 0 : Received message 31: '{"H":"privateRoomHub","M":"joinRoom","A":["abc","int userId:1"]}' over ScaleoutMessageBus
+SignalR.ScaleoutMessageBus Verbose: 0 : Message id: 31, stream : 0, eventKey: 'hg-privateRoomHub.abc' saved with local id: 1
+SignalR.ScaleoutMessageBus Verbose: 0 : Scheduling eventkeys: hg-privateRoomHub.abc

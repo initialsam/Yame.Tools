@@ -60,7 +60,7 @@ namespace WebApi2
 
        
         [HubName(nameof(JoinRoomType.privateRoomHub))]
-        [AuthorizeClaims]
+        //[AuthorizeClaims]
         //[HubName("privateRoomHub")]
         public class PrivateRoomHub : Hub
         {
@@ -75,6 +75,7 @@ namespace WebApi2
 
                 //var userId = Context.QueryString["UserId"];
                 var name = Context.Headers["name"];
+                var nono = Context.Headers["nono"];
                 var transport = Context.QueryString.First(p => p.Key == "transport").Value;
                 Clients.All.connected($"OnConnected ConnectionId:{Context.ConnectionId} , Transport : {transport} , name : {name}");
                 Groups.Add(Context.ConnectionId, messageId);

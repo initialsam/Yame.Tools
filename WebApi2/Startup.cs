@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace WebApi2
     {
         public void Configuration(IAppBuilder app)
         {
+            //GlobalHost.DependencyResolver.UseRedis("127.0.0.1", 6379, null, "PrivateRoomHub");
+            GlobalHost.DependencyResolver.UseStackExchangeRedis("127.0.0.1", 6379, null, "AppName");
             app.MapSignalR();
         }
     }
