@@ -13,7 +13,20 @@ namespace Yame.FeatureTests
         public void Test_StringFormat_value()
         {
             var dateTime = new DateTime(2020, 12, 31, 23, 59, 59);
-            
+
+            //補零
+            Console.WriteLine($"2020W18{1:000}");//2020W18001
+
+            /*
+Jeffrey     32,767
+Fox            255
+Darkthread   9,999
+            */
+            //正數是左補空白，負數為右補空白
+            Console.WriteLine( $"{"Jeffrey",-11} {32767,6:N0}");
+            Console.WriteLine($"{"Fox",-11} {255,6:N0}");
+            Console.WriteLine($"{"Darkthread",-11} {9999,6:N0}");
+            // -------------------------------------------
             Console.WriteLine($"{250:C}");//NT$250.00
             Console.WriteLine($"{123:D}");//123
             Console.WriteLine($"{1234.4567:F}");//1234.46
