@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketServerDemo", "WebSocketServer\WebSocketServerDemo.csproj", "{DFDE300B-2151-4202-832A-A6D6ACA9E794}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{EA5AA96B-AED1-4A2D-A747-BE49651E08EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DFDE300B-2151-4202-832A-A6D6ACA9E794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFDE300B-2151-4202-832A-A6D6ACA9E794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFDE300B-2151-4202-832A-A6D6ACA9E794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5AA96B-AED1-4A2D-A747-BE49651E08EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5AA96B-AED1-4A2D-A747-BE49651E08EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5AA96B-AED1-4A2D-A747-BE49651E08EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5AA96B-AED1-4A2D-A747-BE49651E08EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
