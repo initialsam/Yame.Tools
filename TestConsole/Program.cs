@@ -11,14 +11,27 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+           
+
+
             var localVersion = new Version("2.30.0");
             var serverVersion = new Version("2.28.12");
-            var result1 = serverVersion.CompareTo(localVersion); //-1   小於
+            if(localVersion > serverVersion)
+            {
+                var a = 1;
+            }
 
-            var result2= localVersion.CompareTo(serverVersion); //1     大於
+            var result1 = serverVersion.CompareTo(localVersion); //-1   serverVersion小於localVersion
 
-            var aa = new Version("2.28.12");
-            var bb = new Version("2.28.12");
+            var result2= localVersion.CompareTo(serverVersion); //1     localVersion大於serverVersion
+
+            var aa = new Version("2.1");
+            var bb = new Version("2.1");
+            if (aa == bb)
+            {
+                var a1 = 1;
+            }
+
             var result3 = aa.CompareTo(bb); //0  等於          
 
 

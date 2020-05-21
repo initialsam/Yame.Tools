@@ -39,5 +39,15 @@ namespace Yame.Tools.Extensions
             bool isNumeric = int.TryParse(aNumber, out n);
             return isNumeric;
         }
+
+        /// <summary>
+        /// 最少0.0 最多0.0.0.0 , 單一數字不能超過int
+        /// </summary>
+        /// <param name="Input"></param>
+        /// <returns></returns>
+        public static Version ToVersion(this String Input)
+        {
+            return new Version(Input); ;
+        }
     }
 }
