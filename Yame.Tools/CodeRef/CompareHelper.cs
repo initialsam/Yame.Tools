@@ -28,6 +28,12 @@ namespace Yame.Tools.CodeRef
 
     public static class CompareHelper
     {
+        /// <summary>
+        /// 比對出 要新增 要修改 要刪除的資料
+        /// </summary>
+        /// <param name="nowList"></param>
+        /// <param name="originalList"></param>
+        /// <returns></returns>
         public static CompareResult CompareList(List<HotfixInfo> nowList, List<HotfixInfo> originalList )
         {
             var result = new CompareResult();
