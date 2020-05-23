@@ -15,7 +15,7 @@ namespace Yame.Tools.Extensions
         /// <returns></returns>
         public static bool VersionGreaterThan(this string Input, string target)
         {
-            return CompareVersionHelper.CompareVersion(Input,target) == 1;
+            return CompareVersionHelper.CompareVersion(Input, target) == 1;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Yame.Tools.Extensions
         /// <returns></returns>
         public static bool VersionEqual(this string Input, string target)
         {
-            return Input == target;
+            return CompareVersionHelper.CompareVersion(Input, target) == 0;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Yame.Tools.Extensions
         /// <returns></returns>
         public static bool VersionNotEqual(this string Input, string target)
         {
-            return Input != target;
+            return CompareVersionHelper.CompareVersion(Input, target) != 0;
         }
     }
 }
