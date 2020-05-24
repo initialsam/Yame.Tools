@@ -50,6 +50,10 @@
     <Folder Include="FrontService\Interface\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MongoDbRepository\MongoDbRepository.csproj">
+      <Project>{295E26EA-9E20-43AA-9F69-EDA43B52D165}</Project>
+      <Name>MongoDbRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MsSqlRepoitory\MsSqlRepoitory.csproj">
       <Project>{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}</Project>
       <Name>MsSqlRepoitory</Name>

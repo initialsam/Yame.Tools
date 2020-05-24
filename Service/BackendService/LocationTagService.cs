@@ -1,4 +1,5 @@
-﻿using MsSqlRepoitory.Entities;
+﻿using MongoDbRepository;
+using MsSqlRepoitory.Entities;
 using MsSqlRepoitory.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,17 @@ namespace Service.BackendService
 {
     public class LocationTagService : ILocationTagService
     {
-        public IRepository<LocationTag> LocationTagRepo { get; }
+        public IRepository<MsSqlRepoitory.Entities.LocationTag> LocationTagRepo { get; }
+        public IMongoRepository<MongoDbRepository.LocationTag> LocationTagMongoDbRepo{ get; }
 
-        public LocationTagService(IRepository<LocationTag> locationTagRepo)
+        public LocationTagService(IRepository<MsSqlRepoitory.Entities.LocationTag> locationTagRepo,
+            IMongoRepository<MongoDbRepository.LocationTag> locationTagMongoDbRepo)
         {
             LocationTagRepo = locationTagRepo;
+            LocationTagMongoDbRepo = locationTagMongoDbRepo;
         }
         //public void Save(LocationTagDto dto)
-        public void Save(LocationTag dto)
+        public void Save(MsSqlRepoitory.Entities.LocationTag dto)
         {
             //if (dto.LocationTagId == 0)
             //{
@@ -36,6 +40,14 @@ namespace Service.BackendService
                 LocationTagRepo.Update(dto);
             }
             LocationTagRepo.Save();
+
+            var mongoLocationTag = new MongoDbRepository.LocationTag()
+            {
+                LocationName = dto.LocationName,
+                Sequence = dto.Sequence
+            };
+
+            LocationTagMongoDbRepo.InsertOne(mongoLocationTag);
         }
 
         public void Remove(int locationTagId)

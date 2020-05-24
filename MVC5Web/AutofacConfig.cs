@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using MongoDbRepository;
 using MsSqlRepoitory;
 using MsSqlRepoitory.Repositories;
 using Service.BackendService;
@@ -26,10 +27,14 @@ namespace MVC5Web
             // the class in Global.asax.)
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            //Register DataRepository
+            //Register MsSqlRepoitory
             builder.RegisterType<DataContext>().AsSelf().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerRequest();
             builder.RegisterType<EFUnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+
+            //Register MongoDbRepository
+            builder.RegisterType<MongoDbSettings>().As<IMongoDbSettings>().SingleInstance();
+            builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IMongoRepository<>)).InstancePerRequest();
 
             //Register Service
             builder.RegisterType<LocationTagService>().As<ILocationTagService>().InstancePerRequest();
