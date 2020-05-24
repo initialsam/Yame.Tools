@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4D1EC2F7-B47
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5Web", "MVC5Web\MVC5Web.csproj", "{34D126AA-74C9-4431-B820-1AFD1461E335}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsSqlRepoitory", "MsSqlRepoitory\MsSqlRepoitory.csproj", "{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,12 +61,17 @@ Global
 		{34D126AA-74C9-4431-B820-1AFD1461E335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34D126AA-74C9-4431-B820-1AFD1461E335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34D126AA-74C9-4431-B820-1AFD1461E335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34D126AA-74C9-4431-B820-1AFD1461E335} = {4D1EC2F7-B47C-4257-9900-7DFF3D519E12}
+		{7906A9A7-F2CF-4FFB-BA42-C5BE263F8C76} = {4D1EC2F7-B47C-4257-9900-7DFF3D519E12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBC22F5A-9FB7-4223-A39B-F5D8964889C1}

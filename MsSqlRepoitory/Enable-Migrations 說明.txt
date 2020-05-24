@@ -1,0 +1,14 @@
+﻿選 MsSqlRepoitory 專案
+Enable-Migrations
+
+protected override void Seed(MsSqlRepoitory.DataContext context)
+{
+    context.Seed(context);
+    base.Seed(context);
+}
+
+選 MsSqlRepoitory 專案
+Add-Migration Initial
+
+選 MsSqlRepoitory 專案
+Update-Database
