@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreWeb.MongoDbRepository;
+using CoreWeb.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,12 +29,16 @@ namespace CoreWeb
             services.AddRazorPages();
             services.AddScoped(typeof(IMongoDbSettings), typeof(MongoDbSettings));
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
+            services.AddScoped(typeof(ILoginService), typeof(LoginService));
 
             services.AddAuthentication(o => {
                 o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 //o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
             })
-             .AddCookie();
+             .AddCookie(options =>
+             {
+                 options.LoginPath = "/Login";
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

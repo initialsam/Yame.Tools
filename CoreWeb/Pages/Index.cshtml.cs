@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoreWeb.MongoDbRepository;
 using CoreWeb.MongoDbRepository.Entities;
+using CoreWeb.Utility.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -27,16 +28,14 @@ namespace CoreWeb.Pages
         {
             if(BackendAccountRepo.AsQueryable().Any() == false)
             {
-                var sha1 = System.Security.Cryptography.SHA1.Create();
-
-                var crypto = sha1.ComputeHash(Encoding.Default.GetBytes("admin"));
-                string sha1Watchword = Convert.ToBase64String(crypto);
+                string sha1Watchword = "admin".ToSha1();
                 BackendAccountRepo.InsertOne(new BackendAccount
                 {
-                     Account = "admin",
-                      Watchword = sha1Watchword
+                    Account = "admin",
+                    Watchword = sha1Watchword
                 });
             }
         }
+
     }
 }
