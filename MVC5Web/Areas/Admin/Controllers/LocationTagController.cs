@@ -19,13 +19,29 @@ namespace MVC5Web.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
-            LocationTagService.Save(new LocationTag
-            {
-                LocationName = "Test",
-                Sequence = 99
-            });
+            //LocationTagService.Save(new LocationTag
+            //{
+            //    LocationName = "Test",
+            //    Sequence = 99
+            //});
 
             return View();
+        }
+
+        public ActionResult Get(int page, int rows,string sidx,string sord)
+        {
+
+            var result = LocationTagService.Query(page, rows, sidx, sord);
+            int totalRecords = LocationTagService.CountAll();
+            var totalPages = (int)Math.Ceiling((float)totalRecords / (float)rows);
+            var jsonData = new
+            {
+                total = totalPages,
+                page,
+                records = totalRecords,
+                rows = result
+            };
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
         //public ActionResult Get(int? page, int? limit, string sortBy, string direction, string txtLocationName)
         //{

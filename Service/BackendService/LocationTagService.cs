@@ -56,6 +56,32 @@ namespace Service.BackendService
             LocationTagRepo.Save();
         }
 
+        public List<MongoDbRepository.LocationTag> Query(int page, int rows, string sidx, string sord)
+        {
+            var a  = LocationTagMongoDbRepo.AsQueryable();
+            if(sord == "desc")
+            {
+                a = a.OrderByDescending(NewMethod());
+            }
+            else
+            {
+                a = a.OrderBy(x => x.Sequence);
+            }
+
+
+            return a.Skip((page - 1) * rows).Take(rows).ToList();
+        }
+
+        private static System.Linq.Expressions.Expression<Func<MongoDbRepository.LocationTag, int>> NewMethod()
+        {
+            return x => x.Sequence;
+        }
+
+        public int CountAll()
+        {
+            return LocationTagMongoDbRepo.AsQueryable().Count();
+        }
+
         //public GridPageDto<LocationTagIndexDto> GetPage(int? page, int? limit, string sortBy, string direction, string txtLocationTagName)
         //{
         //    var query = LocationTagRepo.LookupAll();

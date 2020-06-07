@@ -22,6 +22,9 @@ namespace Service.BackendService
         /// <param name="projectTagId"></param>
         void Remove(int locationTagId);
 
+        int CountAll();
+
+        List<MongoDbRepository.LocationTag> Query(int page, int rows, string sidx, string sord);
         /// <summary>
         /// 取得分頁資料
         /// </summary>

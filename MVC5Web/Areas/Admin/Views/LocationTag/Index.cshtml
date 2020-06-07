@@ -3,5 +3,28 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<table id="grid"></table>
+<script>
+       $(function () {
 
+           $("#grid").jqGrid({
+                url: "@Url.Action("Get")",
+                datatype: 'json',
+               mtype: 'Get',
+               iconSet: "fontAwesome",
+               rownumbers: true,
+                pager: true,
+               rowNum: 2,
+                viewrecords: true,
+               sortname: "Sequence",
+            sortorder: "desc",
+                caption: 'JQgrid DEMO',
+                emptyrecords: 'No records',
+               colModel:[
+                { name: "Sequence" },
+                { name: "LocationName" }
+            ]
+        });
+    });
+
+</script>
