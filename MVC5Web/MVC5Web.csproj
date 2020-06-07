@@ -205,6 +205,10 @@
       <Project>{D78840B6-D2B7-497A-9985-9FD566900E4F}</Project>
       <Name>Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yame.Tools.NetFramework\Yame.Tools.NetFramework.csproj">
+      <Project>{887fef03-c1fa-416f-b223-c5e6b05d4b33}</Project>
+      <Name>Yame.Tools.NetFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
