@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MVC5Web.Models
 {
@@ -39,5 +41,10 @@ namespace MVC5Web.Models
         //Tel
         [Phone]
         public string CustomerPhone { get; set; }
+
+        [DisplayName("類別")]
+        public List<string> Category { get; set; } = new List<string>();
+
+        public MultiSelectList CategoryList { get; set; }
     }
 }

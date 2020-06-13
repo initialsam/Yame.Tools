@@ -20,6 +20,39 @@ namespace Yame.Tools.Helper
             }
         }
 
+        /* 轉DataTable時 改欄位名稱為中文 跟 處理時間的格式
+        public static DataTable ListToDataTable(List<RegisterReportResModel> data)
+        {
+           
+            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(RegisterReportResModel));
+            DataTable dataTable = new DataTable();
+            for (int i = 0; i < properties.Count; i++)
+            {
+                PropertyDescriptor property = properties[i];
+                dataTable.Columns.Add(BKResourceManager.GetResoureString(property.Name), typeof(String));
+                //dataTable.Columns.Add(BKResourceManager.GetResoureString(property.Name), Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
+            }
+            object[] values = new object[properties.Count];
+            foreach (var item in data)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if(properties[i].Name == nameof(RegisterReportResModel.CreateDate))
+                    {
+                        values[i] = ((DateTime)properties[i].GetValue(item)).ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+                    else
+                    {
+                        values[i] = properties[i].GetValue(item);
+                    }
+                    
+                }
+
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
+        } 
+        */
         /// <summary>
         /// List轉DataTable
         /// </summary>
@@ -153,15 +186,19 @@ namespace Yame.Tools.Helper
                 }
 
                 // removed ignored columns  
-                for (int i = dataTable.Columns.Count - 1; i >= 0; i--)
+                //沒有columnsToTake 表示全部顯示
+                if (columnsToTake.Any())
                 {
-                    if (i == 0 && showSrNo)
+                    for (int i = dataTable.Columns.Count - 1; i >= 0; i--)
                     {
-                        continue;
-                    }
-                    if (!columnsToTake.Contains(dataTable.Columns[i].ColumnName))
-                    {
-                        workSheet.DeleteColumn(i + 1);
+                        if (i == 0 && showSrNo)
+                        {
+                            continue;
+                        }
+                        if (!columnsToTake.Contains(dataTable.Columns[i].ColumnName))
+                        {
+                            workSheet.DeleteColumn(i + 1);
+                        }
                     }
                 }
 

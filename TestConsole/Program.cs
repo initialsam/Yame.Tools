@@ -11,34 +11,12 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-           
+            var a = new List<string>() { "A-1", "B-1", "C-1", "A-2" };
 
 
-            var localVersion = new Version("2.30.0");
-            var serverVersion = new Version("2.28.12");
-            if(localVersion > serverVersion)
-            {
-                var a = 1;
-            }
+            var b = new List<string>() { "A", "C"};
 
-            var result1 = serverVersion.CompareTo(localVersion); //-1   serverVersion小於localVersion
-
-            var result2= localVersion.CompareTo(serverVersion); //1     localVersion大於serverVersion
-
-            var aa = new Version("2.1");
-            var bb = new Version("2.1");
-            if (aa == bb)
-            {
-                var a1 = 1;
-            }
-
-            var result3 = aa.CompareTo(bb); //0  等於          
-
-
-            var aaaa = CheckAppVersion("2.30.0", "2.29.1"); //1
-            var bbbb = CheckAppVersion("2.30.0", "2.30.0"); //0
-            var cccc = CheckAppVersion("2.30.0", "2.30.1"); //-1
-
+            var c = a.Where(x => b.Any(i=>x.StartsWith(i))).ToList();
 
         }
 
