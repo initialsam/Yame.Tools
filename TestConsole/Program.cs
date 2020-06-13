@@ -14,7 +14,7 @@ namespace TestConsole
            
 
 
-            var localVersion = new Version("2.30.0");
+            var localVersion = new Version("2.30.13");
             var serverVersion = new Version("2.28.12");
             if(localVersion > serverVersion)
             {
