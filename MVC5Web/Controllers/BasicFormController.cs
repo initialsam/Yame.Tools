@@ -34,5 +34,14 @@ namespace MVC5Web.Controllers
                viewModel.Category);
             return View(viewModel);
         }
+
+        public ActionResult GeneralForms()
+        {
+            return View();
+        }
+
+       
+
+
     }
 }
