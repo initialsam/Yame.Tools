@@ -24,7 +24,8 @@ namespace MVC5Web.Controllers
         public ActionResult Create()
         {
             var viewModel = new Visit();
-            var parentCategory = new List<string>() { "A1", "A2", "B1", "B2", "C1", "C2" };
+            
+                var parentCategory = new List<string>() { "A1", "A2", "B1", "B2", "C1", "C2" };
             viewModel.Category = new List<string>() { "A1", "C2" };
           
             viewModel.CategoryList = new MultiSelectList(
@@ -39,9 +40,5 @@ namespace MVC5Web.Controllers
         {
             return View();
         }
-
-       
-
-
     }
 }
