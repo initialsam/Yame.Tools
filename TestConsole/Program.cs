@@ -11,12 +11,13 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            var a = new List<string>() { "A-1", "B-1", "C-1", "A-2" };
+            var a = new Exception("a");
+            var a1 = new Exception("a1");
+            var a2 = new Exception("a2",a1);
+
+            var b = a2.GetBaseException();
 
 
-            var b = new List<string>() { "A", "C"};
-
-            var c = a.Where(x => b.Any(i=>x.StartsWith(i))).ToList();
 
         }
 
