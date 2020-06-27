@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FluentAssertions;
+using Yame.Tools.Extensions;
+
 namespace Yame.Tools.NetCore.Extensions.Tests
 {
     class TestA
