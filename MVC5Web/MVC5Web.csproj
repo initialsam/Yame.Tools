@@ -189,6 +189,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\BasicForm\GeneralForms.cshtml" />
+    <Content Include="Views\BasicForm\CreateAjax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
