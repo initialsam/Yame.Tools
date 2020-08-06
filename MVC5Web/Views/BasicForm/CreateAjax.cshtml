@@ -12,7 +12,16 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            @using (Html.BeginForm(new { @class = "form" }))
+            @using (Ajax.BeginForm("CreateAjax", "BasicForm", null,
+                                    ajaxOptions: new AjaxOptions
+                                    {
+                                        HttpMethod = "Post",
+                                        OnSuccess = "FinishedShow",
+                                        OnFailure = "FailureShow",
+                                        OnBegin = "holdOnOpen()",
+                                        OnComplete = "holdOnClose"
+                                    },
+                                    htmlAttributes: new { id = "BasicForm" }))
             {
                 <div class="box-body">
                     @Html.AntiForgeryToken()
@@ -98,3 +107,22 @@
 @*@section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }*@
+
+<script>
+    function FinishedShow() {
+
+    }
+    function FailureShow(data) {
+        var validator = $("#BasicForm").validate();
+        var errors = data.responseJSON.ModelStateErrors;
+        validator.showErrors(errors);
+
+    } function holdOnOpen() {
+
+    } function holdOnClose() {
+
+    }
+
+
+
+</script>

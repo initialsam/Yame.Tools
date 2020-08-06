@@ -11,12 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.min.css">
- 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
+    @*AdminLTE的css 要放最後 因為有一些套件的樣式也會改變*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/skins/_all-skins.min.css">
+
+
+
     @*
         <link rel="stylesheet" href="">
         <script src=""></script>
@@ -40,14 +45,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.full.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/js/adminlte.min.js"></script>
+
 
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
         <header class="main-header">
             <!-- Logo -->
             <a href="@Url.Action("Index","Home")" class="logo">
@@ -80,7 +86,7 @@
                                             <!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    <img src="https://fakeimg.pl/160x160/" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -93,7 +99,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="https://fakeimg.pl/128x128/" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     AdminLTE Design Team
@@ -105,7 +111,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="https://fakeimg.pl/128x128/" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -117,7 +123,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="https://fakeimg.pl/128x128/" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -129,7 +135,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="https://fakeimg.pl/128x128/" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -270,13 +276,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="https://fakeimg.pl/160x160/" class="user-image" alt="User Image">
                                 <span class="hidden-xs">Alexander Pierce</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="https://fakeimg.pl/160x160/" class="img-circle" alt="User Image">
 
                                     <p>
                                         Alexander Pierce - Web Developer
@@ -327,7 +333,9 @@
                     <li>@Html.ActionLink("BasicForm - Create", "Create", "BasicForm", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("LocationTag", "Index", "LocationTag" , new { Area = "Admin" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("LocationTag", "Index", "LocationTag", new { Area = "Admin" }, new { @class = "nav-link" })</li>
+                    <li class="header">Template</li>
+                    <li>@Html.ActionLink("General Forms", "GeneralForms", "BasicForm", null, new { @class = "nav-link" })</li>
                     <li class="header">LABELS</li>
                     <li class="active treeview">
                         <a href="#">
