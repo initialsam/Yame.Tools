@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Yame.Tools.Helper;
+using Yame.Tools.NetCore.Structs;
 
 namespace Yame.Tools.Extensions
 {
@@ -67,6 +68,24 @@ namespace Yame.Tools.Extensions
             return source.ToString(FormatHelper.DateFormatForSmarteraspDb);
         }
 
+        /// <summary>
+        /// 轉成DateTimeWithZone 時區是台北標準時間
+        /// <para>value 不管是怎樣的時區 都會當作台北時間 然後去產生UTC時間</para>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static DateTimeWithZone ToDateTimeWithZoneForTaipeiStandardTime(this DateTime value)
+        {
+            return new DateTimeWithZone(value, GetTaipeiStandardTimeTimeZoneInfo());
+        }
+        public static DateTime UtcToTaipeiStandardTime(this DateTime value)
+        {
+            return TimeZoneInfo.ConvertTimeFromUtc(value, GetTaipeiStandardTimeTimeZoneInfo());
+        }
 
+        private static TimeZoneInfo GetTaipeiStandardTimeTimeZoneInfo()
+        {
+            return TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+        }
     }
 }

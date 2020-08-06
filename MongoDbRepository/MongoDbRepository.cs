@@ -13,11 +13,16 @@ namespace MongoDbRepository
     where TDocument : IDocument
     {
         private readonly IMongoCollection<TDocument> _collection;
-
+      
         public MongoRepository(IMongoDbSettings settings)
         {
             var database = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
             _collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
+        }
+
+        public IMongoCollection<TDocument> GetMongoCollection()
+        {
+            return _collection;
         }
 
         private protected string GetCollectionName(Type documentType)
@@ -30,6 +35,7 @@ namespace MongoDbRepository
 
         public virtual IQueryable<TDocument> AsQueryable()
         {
+            
             return _collection.AsQueryable();
         }
 
@@ -143,5 +149,7 @@ namespace MongoDbRepository
         {
             return Task.Run(() => _collection.DeleteManyAsync(filterExpression));
         }
+
+    
     }
 }

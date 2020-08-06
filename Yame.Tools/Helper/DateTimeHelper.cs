@@ -195,5 +195,8 @@ namespace Yame.Tools.Helper
         {
             return new DateTime(input.Year, input.Month, input.Day, input.Hour, input.Minute, 0).AddMinutes(-input.Minute % 5);
         }
+
+
+
     }
 }
