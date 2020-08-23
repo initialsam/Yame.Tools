@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreWeb.Hubs;
 using CoreWeb.MongoDbRepository;
 using CoreWeb.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -27,6 +28,7 @@ namespace CoreWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSignalR();
             services.AddScoped(typeof(IMongoDbSettings), typeof(MongoDbSettings));
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(ILoginService), typeof(LoginService));
@@ -64,6 +66,7 @@ namespace CoreWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

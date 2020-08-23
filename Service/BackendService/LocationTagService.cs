@@ -1,4 +1,6 @@
-﻿using MongoDbRepository;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDbRepository;
 using MsSqlRepoitory.Entities;
 using MsSqlRepoitory.Repositories;
 using System;
@@ -85,7 +87,46 @@ namespace Service.BackendService
             return LocationTagMongoDbRepo.AsQueryable().Count();
         }
 
-    
+        public void TestAggregate(ObjectId id)
+        {
+            var collection = LocationTagMongoDbRepo.GetMongoCollection();
+            var a = collection.Aggregate()
+                   .Unwind("Products");
+
+            //.ToList();
+
+            a = a.Match(new BsonDocument { { "Products.ProductId", id } })
+                .Group(new BsonDocument
+                    {
+                            {"_id", new BsonDocument
+                                {
+                                 {"ProductId","$Products.ProductId" },
+                                 {"Price","$Products.Price" }
+                                }
+                            },
+                            { "total",new BsonDocument
+                                {
+                                    { "$sum",1}
+                                }
+                            }
+                    })
+                .Match(new BsonDocument { { "total", new BsonDocument { { "$gte", 50 } } } })
+                .Sort(new BsonDocument { { "total", -1 } })
+                .Limit(1)
+                .Project(new BsonDocument
+                    {
+                            { "_id",0},
+                            { "ProductId","$_id.ProductId"},
+                            { "Price","$_id.Price"},
+                            { "Total","$total"}
+                    });
+            var aa = a.ToList();
+
+            //var b = aa.Select(x => BsonSerializer.Deserialize<LotteryModeDto>(x)).ToList().FirstOrDefault();
+            //return b;
+
+        }
+
         //public GridPageDto<LocationTagIndexDto> GetPage(int? page, int? limit, string sortBy, string direction, string txtLocationTagName)
         //{
         //    var query = LocationTagRepo.LookupAll();

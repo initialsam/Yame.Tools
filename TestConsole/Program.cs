@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,32 +12,19 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            var a = new Exception("a");
-            var a1 = new Exception("a1");
-            var a2 = new Exception("a2",a1);
 
-            var b = a2.GetBaseException();
-
-
+            var a1 = Uri.IsWellFormedUriString("https://www.google.com", UriKind.Absolute);
+            var a2 = Uri.IsWellFormedUriString("http://www.google.com", UriKind.Absolute);
+            var a3 = Uri.IsWellFormedUriString("www.google.com", UriKind.Absolute);
+            var a4 = Uri.IsWellFormedUriString("aaa", UriKind.Absolute);
+            var a5 = Uri.IsWellFormedUriString("https://aaa", UriKind.Absolute);
+            var a6 = Uri.IsWellFormedUriString("http://aaa", UriKind.Absolute);
+            var a7 = Uri.IsWellFormedUriString("https://aaa.bbb", UriKind.Absolute);
+            var a8 = Uri.IsWellFormedUriString("http://aaa.bbb", UriKind.Absolute);
 
         }
-
-
-        public static int CheckAppVersion(string limitVersion, string appVersion)
-        {
-            //如果傳入的 AccountID or appVersion 不正確，則直接傳回 false
-            if (string.IsNullOrEmpty(appVersion))
-            {
-                return -1;
-            }
-            //比較版本，若目前APP版本小於limitVersion則回傳true
-            Version Version_limitVersion = new Version(limitVersion); //這支API想判斷的APP版本
-            Version Version_appVersion = new Version(appVersion);     //目前用戶的APP版本
-
-            //Version_limitVersion == Version_appVersion => 0 等於
-            //Version_limitVersion >  Version_appVersion => 1 大於
-            //Version_limitVersion <  Version_appVersion => -1 小於
-            return Version_limitVersion.CompareTo(Version_appVersion);
-        }
+    
     }
+
+
 }

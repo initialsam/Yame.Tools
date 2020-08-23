@@ -27,6 +27,10 @@ namespace CoreWeb.MongoDbRepository
                     true)
                 .FirstOrDefault())?.CollectionName;
         }
+        public IMongoCollection<TDocument> GetMongoCollection()
+        {
+            return _collection;
+        }
 
         public virtual IQueryable<TDocument> AsQueryable()
         {

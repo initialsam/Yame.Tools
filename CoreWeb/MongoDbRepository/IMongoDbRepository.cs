@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,6 +10,8 @@ namespace CoreWeb.MongoDbRepository
 {
     public interface IMongoRepository<TDocument> where TDocument : IDocument
     {
+        IMongoCollection<TDocument> GetMongoCollection();
+
         IQueryable<TDocument> AsQueryable();
 
         IEnumerable<TDocument> FilterBy(
