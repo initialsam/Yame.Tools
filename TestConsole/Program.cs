@@ -13,15 +13,26 @@ namespace TestConsole
         static void Main(string[] args)
         {
 
-            var a1 = Uri.IsWellFormedUriString("https://www.google.com", UriKind.Absolute);
-            var a2 = Uri.IsWellFormedUriString("http://www.google.com", UriKind.Absolute);
-            var a3 = Uri.IsWellFormedUriString("www.google.com", UriKind.Absolute);
-            var a4 = Uri.IsWellFormedUriString("aaa", UriKind.Absolute);
-            var a5 = Uri.IsWellFormedUriString("https://aaa", UriKind.Absolute);
-            var a6 = Uri.IsWellFormedUriString("http://aaa", UriKind.Absolute);
-            var a7 = Uri.IsWellFormedUriString("https://aaa.bbb", UriKind.Absolute);
-            var a8 = Uri.IsWellFormedUriString("http://aaa.bbb", UriKind.Absolute);
-
+            var chars = "0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 6)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            var result1 = new string(
+               Enumerable.Repeat(chars, 6)
+                         .Select(s => s[random.Next(s.Length)])
+                         .ToArray());
+            var result2 = new string(
+               Enumerable.Repeat(chars, 6)
+                         .Select(s => s[random.Next(s.Length)])
+                         .ToArray());
+            var a = Enumerable.Repeat(chars, 6);
+            foreach (var item in a)
+            {
+                var z = random.Next(item.Length);
+                var b = item[z];
+            }
         }
     
     }
