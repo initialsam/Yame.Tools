@@ -25,6 +25,7 @@ namespace FluentAssertionsNote
                     new Order { Id=1,Price=10},
                     new Order { Id=2,Price=20},
                     new Order { Id=3,Price=30},
+
                 };
 
             var actual = new List<Order>()
@@ -34,13 +35,15 @@ namespace FluentAssertionsNote
                     new Order { Id=3,Price=30},
                 };
 
-            //actual = "test";
-            actual.Should().Equal(expected);
-            //錯誤訊息 Expected object to be "man", but found "test".
+            //不分先後順序
+            actual.ShouldBeEquivalentTo(expected);
+            //順序要一致
+            //actual.ShouldBeEquivalentTo(expected, options => options.WithStrictOrdering());
 
-            //actual = 1;
-            //actual.Should().BeOfType<string>();
-            //錯誤訊息 Expected type to be System.String, but found System.Int32
+           
+            //若expected的 new Order { Id=1,Price=11}
+            //錯誤訊息是
+            //Expected item[0].Price to be 11, but found 10.
         }
 
         [TestMethod]
