@@ -197,6 +197,12 @@ namespace Yame.Tools.Helper
         }
 
 
-
+        public static DateTime NowTaipeiDatetime
+        {
+            get
+            {
+                return TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time"));
+            }
+        }
     }
 }
