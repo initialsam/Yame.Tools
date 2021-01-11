@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using Yame.Tools.NetCore.Dtos;
 
 namespace Yame.Tools.Helper
 {
@@ -218,6 +220,31 @@ namespace Yame.Tools.Helper
             var prdt = DateTime.ParseExact(date, format, CultureInfo.InvariantCulture);
             var result = prdt.AddDays(day).ToString(format);
             return result;
+        }
+
+        /// <summary>
+        /// 檢查是否有重疊時間 , 若有重疊回傳重疊活動
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="overlapNameErrorMessage"></param>
+        /// <returns></returns>
+        public static bool IsEventOverlap(IEnumerable<EventDto> events, out string overlapNameErrorMessage)
+        {
+            DateTime endPrior = DateTime.MinValue;
+            string endNamedPrior = string.Empty;
+            foreach (EventDto eventDto in events.OrderBy(x => x.StartTime))
+            {
+                if (endPrior >= eventDto.StartTime)
+                {
+                    overlapNameErrorMessage = $"{endNamedPrior} 和 {eventDto.EventName} 活動時間有衝突";
+                    return true;
+                }
+
+                endPrior = eventDto.EndTime;
+                endNamedPrior = eventDto.EventName;
+            }
+            overlapNameErrorMessage = string.Empty;
+            return false;
         }
     }
 }

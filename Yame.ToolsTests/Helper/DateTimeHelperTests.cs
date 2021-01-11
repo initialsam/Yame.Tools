@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yame.Tools.Helper;
-
+using Yame.Tools.NetCore.Dtos;
 
 namespace Yame.ToolsTests.Helper
 {
@@ -154,7 +154,7 @@ namespace Yame.ToolsTests.Helper
         public void 無條件捨去取最近的前一個15分鐘刻度的時間()
         {
             //Arrange
-            var input = new DateTime(2020, 1, 1,9,14,0);
+            var input = new DateTime(2020, 1, 1, 9, 14, 0);
             var expected = new DateTime(2020, 1, 1, 9, 0, 0);
             //Act
             var actual = DateTimeHelper.TimeRoundDown(input);
@@ -169,6 +169,47 @@ namespace Yame.ToolsTests.Helper
             var expected = new DateTime(2020, 1, 1, 9, 10, 0);
             //Act
             var actual = DateTimeHelper.TimeRoundDown5Min(input);
+            //Assert
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod()]
+        public void 檢查活動時間是否重疊()
+        {
+            //Arrange  test B 完全包含 test A
+            var input = new List<EventDto>()
+            {
+                new EventDto{ EventName="test A",StartTime=new DateTime(2020,01,10,14,00,00),EndTime=new DateTime(2020,01,10,15,00,00) },
+                new EventDto{ EventName="test B",StartTime=new DateTime(2020,01,09,10,00,00),EndTime=new DateTime(2020,01,11,10,00,00) },
+            };
+            var expected = true;
+            //Act
+            var actual = DateTimeHelper.IsEventOverlap(input,out string overlapNameErrorMessage);
+            //Assert
+            actual.Should().Be(expected);
+
+            //Arrange test B 在 test A 後面
+            input = new List<EventDto>()
+            {
+                new EventDto{ EventName="test A",StartTime=new DateTime(2020,01,10,14,00,00),EndTime=new DateTime(2020,01,10,15,00,00) },
+                new EventDto{ EventName="test B",StartTime=new DateTime(2020,01,11,10,00,00),EndTime=new DateTime(2020,01,11,11,00,00) },
+            };
+            expected = false;
+            //Act
+            actual = DateTimeHelper.IsEventOverlap(input, out overlapNameErrorMessage);
+            //Assert
+            actual.Should().Be(expected);
+
+
+            //Arrange test B 在 test A 緊接都是 1500
+            input = new List<EventDto>()
+            {
+                new EventDto{ EventName="test A",StartTime=new DateTime(2020,01,10,14,00,00),EndTime=new DateTime(2020,01,10,15,00,00) },
+                new EventDto{ EventName="test B",StartTime=new DateTime(2020,01,10,15,00,00),EndTime=new DateTime(2020,01,10,16,00,00) },
+            };
+            expected = true;
+            //Act
+            actual = DateTimeHelper.IsEventOverlap(input, out overlapNameErrorMessage);
             //Assert
             actual.Should().Be(expected);
         }

@@ -20,8 +20,8 @@ namespace Yame.Tools.NetCore.Extensions.Tests
             {
                 new DemoProduct{ ProductId = 1, Name="t1" },
                 new DemoProduct{ ProductId = 2, Name="t2" },
-                new DemoProduct{ ProductId = 1, Name="t11" },
-                new DemoProduct{ ProductId = 2, Name="t22" }
+                new DemoProduct{ ProductId = 1, Name="t1" },
+                new DemoProduct{ ProductId = 2, Name="t2" }
             };
             var expected = new List<DemoProduct>()
             {
