@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Yame.Tools.Helper
@@ -203,6 +204,20 @@ namespace Yame.Tools.Helper
             {
                 return TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time"));
             }
+        }
+
+        /// <summary>
+        /// 文字時間 加減?天 再轉回文字時間
+        /// </summary>
+        /// <param name="date">文字時間</param>
+        /// <param name="format">時間格式</param>
+        /// <param name="day">計算天數</param>
+        /// <returns></returns>
+        public static string StringDate(string date, string format, int day)
+        {
+            var prdt = DateTime.ParseExact(date, format, CultureInfo.InvariantCulture);
+            var result = prdt.AddDays(day).ToString(format);
+            return result;
         }
     }
 }

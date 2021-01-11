@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -20,89 +21,66 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            var aa = new List<string>();
+            var bb = aa.Any();
+            
 
 
-            List<ShippingOrderItem> BatchList = new List<ShippingOrderItem>()
+            var myStackQueue = new StackQueue<int>(); //T is now int
+
+            myStackQueue.Enqueue(1);
+            myStackQueue.Push(2);
+            myStackQueue.Push(3);
+            myStackQueue.Enqueue(4);
+
+            //At this point, the collection is { 3, 2, 1, 4 }
+
+            foreach (var item in myStackQueue)
             {
-                 new ShippingOrderItem{ OrderNo="00124", FlowType = "N" },
-                 new ShippingOrderItem{ OrderNo="00125", FlowType = "N" },
-                 new ShippingOrderItem{ OrderNo="00126", FlowType = "R" },
-                 new ShippingOrderItem{ OrderNo="00128", FlowType = "R" },
-                 new ShippingOrderItem{ OrderNo="00129", FlowType = "" },
-            };
+                Console.WriteLine(item);
+            }
+        }
+        public class StackQueue<T> : IEnumerable<T>
+        {
+            private List<T> elements = new List<T>();
+            private int _top = 0; //NEW
 
-            List<ShippingOrderItem> DayList = new List<ShippingOrderItem>()
+            public void Enqueue(T item)
             {
-                new ShippingOrderItem { OrderNo = "00123", FlowType = "N" },
-                 new ShippingOrderItem { OrderNo = "00124", FlowType = "N" },
-                 new ShippingOrderItem { OrderNo = "00125", FlowType = "N" },
-                 new ShippingOrderItem { OrderNo = "00126", FlowType = "R" },
-                 new ShippingOrderItem { OrderNo = "00127", FlowType = "R" },
-                 new ShippingOrderItem { OrderNo = "00128", FlowType = "R" },
-                 new ShippingOrderItem{ OrderNo="00129", FlowType = "R" },
-                 new ShippingOrderItem{ OrderNo="00130", FlowType = "" },
-            };
+                Console.WriteLine("Queueing " + item.ToString());
+                elements.Insert(elements.Count, item);
+                _top++; //NEW
+            }
 
-            var ExceptList1 = BatchList.Except(DayList, new  ShippingOrderItemComparer()).ToList();
-            var ExceptList2 = DayList.Except(BatchList, new ShippingOrderItemComparer()).ToList();
+            public void Push(T item)
+            {
+                Console.WriteLine("Pushing " + item.ToString());
+                elements.Insert(0, item);
+                _top++; //NEW
+            }
 
+            public T Pop()
+            {
+                var element = elements[0];
+                Console.WriteLine("Popping " + element.ToString());
+                elements.RemoveAt(0);
+                _top--; //NEW
+                return element;
 
+            }
+
+            public IEnumerator<T> GetEnumerator()
+            {
+                for (int index = 0; index < _top; index++)
+                {
+                    yield return elements[index];
+                }
+            }
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
         }
 
     }
-
-    /// <summary>
-    /// 貨運單資料
-    /// </summary>
-    public class ShippingOrderItem//: IEquatable<ShippingOrderItem>
-    {
-        /// <summary>
-        /// 貨運單號
-        /// </summary>
-        public string OrderNo { get; set; }
-
-        /// <summary>
-        /// 進退貨狀態代碼
-        /// </summary>
-        public string FlowType { get; set; }
-
-
-        //public bool Equals(ShippingOrderItem other)
-        //{
-        //    if (other == null) return false;
-        //    return this.OrderNo == other.OrderNo &&
-        //           this.FlowType == other.FlowType;
-        //}
-        //public override bool Equals(object obj) => Equals(obj as ShippingOrderItem);
-
-        //public override int GetHashCode()
-        //{
-        //    int hashCode = -1367433319;
-        //    hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(OrderNo);
-        //    hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FlowType);
-        //    return hashCode;
-        //}
-    }
-    public class ShippingOrderItemComparer : IEqualityComparer<ShippingOrderItem>
-    {
-        public bool Equals(ShippingOrderItem x, ShippingOrderItem y)
-        {
-            if (Object.ReferenceEquals(x, y)) return true;
-            if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
-                return false;
-            return x.OrderNo == y.OrderNo &&
-                   x.FlowType == y.FlowType;
-        }
-
-        public int GetHashCode(ShippingOrderItem obj)
-        {
-            if (object.ReferenceEquals(obj, null)) return 0;
-
-            int hashCode = -1367433319;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(obj.OrderNo);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(obj.FlowType);
-            return hashCode;
-        }
-    }
-
 }
