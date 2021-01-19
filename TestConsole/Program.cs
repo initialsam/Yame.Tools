@@ -21,10 +21,18 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            var aa = new List<string>();
-            var bb = aa.Any();
-            
+            var operatingUnitName = "陳俊欽-紅不讓手機配件-鳳山店";
+            var index = operatingUnitName.IndexOf("-")+1;
+            var storeName = operatingUnitName.Substring(index, operatingUnitName.Length- index);
 
+            var v1 = 0 / 2;
+            var v2 = 1 / 2;
+            var v3 = 2 / 2;
+
+            var aa = new List<string>() { "a", "b", "c", "d", "e", "f", "g" };
+            var a = aa.Select((item, inx) => new { item, inx })
+                      .GroupBy(x => x.inx/2);
+        
 
             var myStackQueue = new StackQueue<int>(); //T is now int
 
