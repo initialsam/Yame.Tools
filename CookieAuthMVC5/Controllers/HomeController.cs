@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CookieAuthMVC5.Controllers
+namespace ㄎ.Controllers
 {
     public class HomeController : Controller
     {
@@ -28,7 +28,8 @@ namespace CookieAuthMVC5.Controllers
                 {
                     new Claim(ClaimTypes.NameIdentifier, model.Account+"asdID"),
                     new Claim(ClaimTypes.Name,  model.Account),
-                    new Claim(ClaimTypes.Role, model.Account)
+                    new Claim(ClaimTypes.Role, model.Account),
+                    new Claim("TA", "測試")
                 }, "MyCookieNameTODO");
 
                 Request.GetOwinContext().Authentication.SignIn(identity);
@@ -42,7 +43,10 @@ namespace CookieAuthMVC5.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            
+            ClaimsIdentity claimsIdentity = User.Identity as ClaimsIdentity;
+            Claim claim1 = claimsIdentity?.FindFirst(ClaimTypes.Name);
+            Claim claim2 = claimsIdentity?.FindFirst("TA");
             return View();
         }
 

@@ -84,6 +84,9 @@
     <Compile Include="LocationTag.cs" />
     <Compile Include="MongoDbRepository.cs" />
     <Compile Include="MongoDbSettings.cs" />
+    <Compile Include="Oldschool\Oldschool.cs" />
+    <Compile Include="Oldschool\OldschoolRepository.cs" />
+    <Compile Include="Oldschool\MongoHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

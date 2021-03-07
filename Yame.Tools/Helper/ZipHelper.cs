@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -99,6 +100,52 @@ namespace Yame.Tools.Helper
             }
         }
 
+        /// <summary>
+        /// 解壓縮後刪除Zip檔
+        /// </summary>
+        /// <param name="fullPathDto"></param>
+        /// <param name="zipPassword"></param>
+        /// <returns></returns>
+        public static bool UnZipAndDelete(FullPathDto fullPathDto, string zipPassword)
+        {
+            if (File.Exists(fullPathDto.LocalZipFullPath))
+            {
+                try
+                {
+                    var options = new ReadOptions { StatusMessageWriter = System.Console.Out };
+                    using (Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(fullPathDto.LocalZipFullPath, options))
+                    {
+                        zip.Password = zipPassword; // 解壓密碼
+                        zip.ExtractAll(fullPathDto.LocalFolder, ExtractExistingFileAction.OverwriteSilently);  // 解壓全部
+                    }
+                    File.Delete(fullPathDto.LocalZipFullPath);
+                    if (File.Exists(fullPathDto.LocalXmlFullPath))
+                    {
+                        Console.WriteLine($"解ZIP 成功 XML: {fullPathDto.LocalXmlFullPath}");
+                        return true;
+                    }
+
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"解ZIP {fullPathDto.LocalZipFullPath} 發生錯誤 {ex}");
+                }
+            }
+
+            return false;
+        }
+    }
+
+    public class FullPathDto
+    {
+        public string FtpWorkZipFullPath { get; set; }
+        public string FtpOkZipFullPath { get; set; }
+        public string FtpErrZipFullPath { get; set; }
+
+        public string LocalFolder { get; set; }
+        public string LocalZipFullPath { get; set; }
+        public string LocalXmlFullPath { get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace Yame.Tools.Helper
@@ -41,6 +42,22 @@ namespace Yame.Tools.Helper
             {
                 File.Delete(target_dir);
             }
+        }
+
+        /// <summary>
+        /// 建立 每天日期的資料夾 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string CreateDailyFileFolder(string type, DateTime date)
+        {
+            if (string.IsNullOrEmpty(type)) type = "unknow";
+            string folder = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\daily\{date:yyyy-MM-dd_HH_mm}\{type}";
+
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+            return folder;
         }
     }
 }
