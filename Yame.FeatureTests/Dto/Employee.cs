@@ -25,5 +25,36 @@ namespace Yame.FeatureTests.Dto
             isManager = IsManager;
             yearWorked = YearWorked;
         }
+        /// <summary>
+        /// _ 就是一個變數 只是想要讓你不去在意他的存在
+        /// </summary>
+        /// <param name="_"></param>
+        public void ShowValue(string _)
+        {
+            Console.WriteLine(_);
+            _ = "Hello World";
+            Console.WriteLine(_);
+        }
+
+        public (string, double, int, int, int, int) QueryCityPopulationByYear(string name, int year1, int year2)
+        {
+            int pop1 = 0, pop2 = 0;
+            double area = 0;
+            if (name == "India")
+            {
+                area = 468.48;
+                if (year1 == 1947)
+                {
+                    pop1 = 7781984;
+                }
+                if (year2 == 2020)
+                {
+                    pop2 = 8175133;
+                }
+                return (name, area, year1, pop1, year2, pop2);
+            }
+            //Return nothing
+            return ("", 0, 0, 0, 0, 0);
+        }
     }
 }

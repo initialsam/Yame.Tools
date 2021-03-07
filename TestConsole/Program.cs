@@ -12,27 +12,17 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            string[] a = new string[10];
 
-            var chars = "0123456789";
-            var random = new Random();
-            var result = new string(
-                Enumerable.Repeat(chars, 6)
-                          .Select(s => s[random.Next(s.Length)])
-                          .ToArray());
-            var result1 = new string(
-               Enumerable.Repeat(chars, 6)
-                         .Select(s => s[random.Next(s.Length)])
-                         .ToArray());
-            var result2 = new string(
-               Enumerable.Repeat(chars, 6)
-                         .Select(s => s[random.Next(s.Length)])
-                         .ToArray());
-            var a = Enumerable.Repeat(chars, 6);
             foreach (var item in a)
             {
-                var z = random.Next(item.Length);
-                var b = item[z];
+
             }
+            int[] theArray = { 1, 3, 5, 7, 9 };
+            theArray.GetValue(1, 2);
+            var aa = theArray.Length;
+
+
         }
     
     }

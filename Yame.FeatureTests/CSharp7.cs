@@ -147,5 +147,16 @@ namespace Yame.FeatureTests
             "Quincy".Should().Be(lName);
 
         }
+
+        [TestMethod]
+        public void Test_CSharp7_Discards2()
+        {
+            //ref https://github.com/ssukhpinder/DiscardExample/blob/master/DiscardExample/Program.cs
+            var emp = new Employee("Tim", "Lee");
+            
+            emp.ShowValue("Show time");
+            var (_, _, _, pop1, _, pop2) = emp.QueryCityPopulationByYear("India", 1947, 2020);
+            Console.WriteLine($"Population chage: {pop2 - pop1:N0}");
+        }
     }
 }
