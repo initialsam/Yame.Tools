@@ -82,6 +82,11 @@ namespace MVC5WebApi.App_Start
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("Username", context.UserName));
             identity.AddClaim(new Claim("Password", context.Password));
+            /*
+            identity.AddClaim(new Claim(ClaimTypes.Role, string.Join(",", user.Roles)));
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.Name));
+            identity.AddClaim(new Claim("Email", user.EmailID));
+            */
             context.Validated(identity);
         }
     }
