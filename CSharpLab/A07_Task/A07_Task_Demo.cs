@@ -9,7 +9,7 @@ namespace CSharpLab.A07_Task
 {
     public class A07_Task_Demo
     {
-        public void demo()
+        public void Demo()
         {
             new LimitNumberOfSimultaneousTasks().demo();
             new LongRunning().demo();

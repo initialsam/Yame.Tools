@@ -8,7 +8,7 @@ namespace CSharpLab.A05_Enum
 {
     public class A06_Enum_Demo
     {
-        public void demo()
+        public void Demo()
         {
             var day = Week.周一 | Week.周二; //加入  周一,周二
             day |= Week.周三; //加入 周三

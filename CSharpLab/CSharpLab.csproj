@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,7 +31,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;YAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -89,6 +89,12 @@
     <Compile Include="A07_Task\CustomTaskScheduler.cs" />
     <Compile Include="A07_Task\LimitNumberOfSimultaneousTasks.cs" />
     <Compile Include="A07_Task\LongRunning.cs" />
+    <Compile Include="A08_Attributes\A08_Attributes_Demo.cs" />
+    <Compile Include="A08_Attributes\DefaultColorAttribute.cs" />
+    <Compile Include="A08_Attributes\DisplayAttribute.cs" />
+    <Compile Include="A08_Attributes\IndentAttribute.cs" />
+    <Compile Include="A08_Attributes\Product.cs" />
+    <Compile Include="A08_Attributes\ProductDebugDisplay.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,7 +10,7 @@ namespace CSharpLab.A06_Cache
     public class A06_Cache_Demo
     {
 
-        public void demo()
+        public void Demo()
         {
             var tasks = new List<Task>();
             for (var i = 0; i < 3; i++)
