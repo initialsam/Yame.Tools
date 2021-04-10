@@ -95,6 +95,7 @@
     <Compile Include="A08_Attributes\IndentAttribute.cs" />
     <Compile Include="A08_Attributes\Product.cs" />
     <Compile Include="A08_Attributes\ProductDebugDisplay.cs" />
+    <Compile Include="MinimalContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

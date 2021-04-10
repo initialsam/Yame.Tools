@@ -28,7 +28,13 @@ namespace CSharpLab
             //A05_Enum_Demo();
             //A06_Cache_Demo();
             //A07_Task_Demo();
-            A08_Attributes_Demo();
+            //A08_Attributes_Demo();
+
+            var container = new MinimalContainer();
+            container.Register<IWelcomer, Welcomer>();
+            container.Register<IWriter, ConsoleWriter>();
+            var welcomer = container.Create<IWelcomer>();
+            welcomer.SayHelloTo("World");
         }
 
         private static bool aaa(Book x)
