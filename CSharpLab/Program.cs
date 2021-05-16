@@ -7,6 +7,7 @@ using CSharpLab.A05_Enum;
 using CSharpLab.A06_Cache;
 using CSharpLab.A07_Task;
 using CSharpLab.A08_Attributes;
+using CSharpLab.A09_Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ namespace CSharpLab
             //A06_Cache_Demo();
             //A07_Task_Demo();
             //A08_Attributes_Demo();
-
-            var container = new MinimalContainer();
-            container.Register<IWelcomer, Welcomer>();
-            container.Register<IWriter, ConsoleWriter>();
-            var welcomer = container.Create<IWelcomer>();
-            welcomer.SayHelloTo("World");
+            A09_Reflection_Demo();
+            //var container = new MinimalContainer();
+            //container.Register<IWelcomer, Welcomer>();
+            //container.Register<IWriter, ConsoleWriter>();
+            //var welcomer = container.Create<IWelcomer>();
+            //welcomer.SayHelloTo("World");
         }
 
         private static bool aaa(Book x)
@@ -126,7 +127,16 @@ namespace CSharpLab
             var a = new A08_Attributes_Demo();
             a.Demo();
         }
-
+        private static void A09_Reflection_Demo()
+        {
+            LogHelper.Delimiter = "\r\n";
+            LogHelper.ArrowSymbol = "=>";
+            var a = new A09_Reflection_Demo();
+            a.Demo1();
+            a.Demo2();
+            a.Demo3();
+        }
+        
     }
 
     public class Student

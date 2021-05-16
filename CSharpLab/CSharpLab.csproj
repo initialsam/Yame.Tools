@@ -95,6 +95,12 @@
     <Compile Include="A08_Attributes\IndentAttribute.cs" />
     <Compile Include="A08_Attributes\Product.cs" />
     <Compile Include="A08_Attributes\ProductDebugDisplay.cs" />
+    <Compile Include="A09_Reflection\A09_Reflection_Demo.cs" />
+    <Compile Include="A09_Reflection\LogHelper.cs" />
+    <Compile Include="A09_Reflection\MyClass.cs" />
+    <Compile Include="A09_Reflection\ReflectionExtension.cs" />
+    <Compile Include="A09_Reflection\ProductDto.cs" />
+    <Compile Include="A09_Reflection\SiteDto.cs" />
     <Compile Include="MinimalContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
