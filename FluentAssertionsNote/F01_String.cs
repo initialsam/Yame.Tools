@@ -5,7 +5,7 @@ using FluentAssertions;
 namespace FluentAssertionsNote
 {
     /// <summary>
-    /// 內容都是 官方Wiki範例 https://github.com/dennisdoomen/fluentassertions/wiki
+    /// 內容都是 官方範例 https://fluentassertions.com/strings/
     /// </summary>
     [TestClass]
     public class F01_String
