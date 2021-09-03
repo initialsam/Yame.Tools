@@ -12,17 +12,18 @@ using System.Web;
 namespace SignalRMVC5Web
 {
     [HubName("TestHub")]
-    public class TestHub: Hub
+    public class TestHub : Hub
     {
         public void Join(string groupName)
         {
             Groups.Add(Context.ConnectionId, groupName);
         }
 
-        public void Send(string name, string message)
+        public void Send(string groupName, string name, string message)
         {
             // Call the addNewMessageToPage method to update clients.
-            Clients.All.addNewMessageToPage(name, message);
+            //Clients.All.addNewMessageToPage(name, message);
+            Clients.Group(groupName).addNewMessageToPage(name, message);
         }
     }
 }
