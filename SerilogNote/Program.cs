@@ -31,12 +31,12 @@ namespace SerilogNote
                 Name = "ZZZ"
             };
             Log.Logger.Information("Add user {ProductName} ，Age is {PAge}，A is {Product}，B is {@Product}", p.Age, p.Name, p, p2);
-            Log.Logger.Information("Add user {ProductName} ，Age is {PAge}，A is {Product}", p.Age, p.Name, p);
+            Log.Logger.Information("Add user {ProductName} ，Age is {PAge}，A is {Product}，B is {Product}", p.Age, p.Name, p2);
             var list1 = new List<int> { 5, 6, 7 };
             var list2 = new List<string> { "A5", "B6", "C7" };
             var list3 = new List<Product> { p, p2 };
 
-            Log.Logger.Information("list1 is {list1}，list2 is {list2}，list3 is {@list3}", list1, list2, list3);
+            Log.Logger.Information("list1 is {list1}，list2 is {list2}，list3 is {list3}", list1, list2, list3);
 
             var d1 = new Dictionary<int, string> { { 1, "aa" }, { 2, "BB" } };
             var d2 = new Dictionary<string, int> { { "YY", 8 }, { "ZZ", 9 } };
