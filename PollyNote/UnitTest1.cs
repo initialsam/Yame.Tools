@@ -18,5 +18,22 @@ namespace PollyNote
             //https://marcus116.blogspot.com/2019/06/netcore-polly-retry.html
             PolicyRetry.Test();
         }
+
+        [TestMethod]
+        public void PolicyTimeoutTest()
+        {
+            //https://marcus116.blogspot.com/2019/06/netcore-polly-timeout-wrap.html
+            //PolicyTimeout.Test();
+
+            PolicyTimeout.TestTimeoutRetry();
+        }
+
+
+        [TestMethod]
+        public void PolicyFallbackTest()
+        {
+            //PolicyFallback.Test();
+            PolicyFallback.TestTimeoutRetryFallback();
+        }
     }
 }
