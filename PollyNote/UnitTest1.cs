@@ -35,5 +35,12 @@ namespace PollyNote
             //PolicyFallback.Test();
             PolicyFallback.TestTimeoutRetryFallback();
         }
+
+        [TestMethod]
+        public void WrapTest()
+        {
+            //PolicyFallback.Test();
+            new Wrap().Test();
+        }
     }
 }
