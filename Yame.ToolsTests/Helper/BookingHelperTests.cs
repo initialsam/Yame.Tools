@@ -32,7 +32,9 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 7, 0, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 7, 0, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -45,7 +47,9 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = false;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 8, 0, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 8, 0, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -58,7 +62,9 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 7, 30, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 7, 30, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         //---------------------
@@ -72,7 +78,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 7, 0, 0), new DateTime(2019, 10, 1, 7, 30, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 7, 0, 0), 
+                new DateTime(2019, 10, 1, 7, 30, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -85,7 +94,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = false;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 8, 0, 0), new DateTime(2019, 10, 1, 9, 0, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 8, 0, 0), 
+                new DateTime(2019, 10, 1, 9, 0, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -98,7 +110,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = false;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 6, 0, 0), new DateTime(2019, 10, 1, 7, 0, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 6, 0, 0), 
+                new DateTime(2019, 10, 1, 7, 0, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -111,7 +126,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 6, 50, 0), new DateTime(2019, 10, 1, 8, 0, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 6, 50, 0), 
+                new DateTime(2019, 10, 1, 8, 0, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -124,7 +142,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 7, 30, 0), new DateTime(2019, 10, 1, 8, 30, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 7, 30, 0),
+                new DateTime(2019, 10, 1, 8, 30, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -137,7 +158,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(7, 8);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 10, 1, 6, 30, 0), new DateTime(2019, 10, 1, 7, 30, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 10, 1, 6, 30, 0), 
+                new DateTime(2019, 10, 1, 7, 30, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
         [TestMethod()]
@@ -150,7 +174,10 @@ namespace Yame.ToolsTests.Helper
             var bookingList = GetBookingList(0, 1);
             var expected = true;
 
-            var actual = BookingHelper.IsConflict(new DateTime(2019, 09, 30, 23, 50, 0), new DateTime(2019, 10, 1, 8, 10, 0), bookingList);
+            var actual = BookingHelper.IsConflict(
+                new DateTime(2019, 09, 30, 23, 50, 0), 
+                new DateTime(2019, 10, 1, 8, 10, 0), 
+                bookingList);
             actual.Should().Be(expected);
         }
     }
