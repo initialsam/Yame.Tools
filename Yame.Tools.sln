@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonNetNote", "JsonNetNote\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogNote", "NLogNote\NLogNote.csproj", "{E851E95E-0EFA-400F-B895-9BC1ED8C0E36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEnumNote", "SmartEnumNote\SmartEnumNote.csproj", "{A8FA52ED-E7EA-460F-9160-FB56044EDB1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +177,10 @@ Global
 		{E851E95E-0EFA-400F-B895-9BC1ED8C0E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E851E95E-0EFA-400F-B895-9BC1ED8C0E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E851E95E-0EFA-400F-B895-9BC1ED8C0E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FA52ED-E7EA-460F-9160-FB56044EDB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FA52ED-E7EA-460F-9160-FB56044EDB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FA52ED-E7EA-460F-9160-FB56044EDB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FA52ED-E7EA-460F-9160-FB56044EDB1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,6 +203,7 @@ Global
 		{54F22C60-D93B-4197-8C89-027EE0D842E9} = {39FFB6F5-769B-4EDF-ABF8-BF47E7400E6C}
 		{AD945C1B-EF53-4BA6-AA33-FB6F3303082D} = {39FFB6F5-769B-4EDF-ABF8-BF47E7400E6C}
 		{E851E95E-0EFA-400F-B895-9BC1ED8C0E36} = {39FFB6F5-769B-4EDF-ABF8-BF47E7400E6C}
+		{A8FA52ED-E7EA-460F-9160-FB56044EDB1E} = {39FFB6F5-769B-4EDF-ABF8-BF47E7400E6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBC22F5A-9FB7-4223-A39B-F5D8964889C1}
