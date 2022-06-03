@@ -148,12 +148,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationTagController.cs" />
     <Compile Include="AutofacConfig.cs" />
+    <Compile Include="BaseCriteria.cs" />
     <Compile Include="Controllers\BasicFormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Visit.cs" />
+    <Compile Include="Models\VisitCriteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

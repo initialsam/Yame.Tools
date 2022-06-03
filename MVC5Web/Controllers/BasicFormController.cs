@@ -19,8 +19,25 @@ namespace MVC5Web.Controllers
                 new Visit{ PetName="bb" },
                 new Visit{ PetName="cc" }
             };
+
             return View(modelList);
         }
+        [HttpPost]
+        public ActionResult Index(VisitCriteria criteriaModel)
+        {
+            var modelList = new List<Visit>()
+            {
+                new Visit{ PetName="aa" },
+                new Visit{ PetName="bb" },
+                new Visit{ PetName="cc" }
+            };
+
+            var criterias = criteriaModel.EffectiveCriterias;
+            var result = BaseCriteria<Visit>.Search(modelList.AsQueryable(), criterias).ToList();
+
+            return View(result);
+        }
+
 
         public ActionResult Create()
         {
