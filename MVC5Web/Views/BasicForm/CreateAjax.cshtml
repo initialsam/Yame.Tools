@@ -89,7 +89,18 @@
                         @*因為 產生table需要一點時間 造成畫面看的出來改成套select2套件的效果 所以先在這裡處理套select2*@
                         <script>$(".select2").select2();</script>
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ContractPlanByCreate)
 
+                        @Html.EditorFor(x => x.ContractPlanByCreate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(x => x.ContractPlanByCreate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ContractExpiryDateByCreate)
+
+                        @Html.EditorFor(x => x.ContractExpiryDateByCreate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(x => x.ContractExpiryDateByCreate, "", new { @class = "text-danger" })
+                    </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Create</button>
                     </div>

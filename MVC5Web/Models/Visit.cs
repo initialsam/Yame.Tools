@@ -46,5 +46,17 @@ namespace MVC5Web.Models
         public List<string> Category { get; set; } = new List<string>();
 
         public MultiSelectList CategoryList { get; set; }
+
+        /// <summary>
+        /// 合約方案
+        /// </summary>
+        [Display(Name = "合約方案 有值下面才必填")]
+        public string ContractPlanByCreate { get; set; }
+        /// <summary>
+        /// 合約到期日
+        /// </summary>
+        [Display(Name = "合約到期日")]
+        [RequiredIfTextboxHasValue("ContractPlanByCreate", ErrorMessage = "合約到期日是必填欄位")]
+        public DateTime? ContractExpiryDateByCreate { get; set; }
     }
 }
