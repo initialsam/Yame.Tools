@@ -101,6 +101,7 @@
     <Compile Include="A09_Reflection\ReflectionExtension.cs" />
     <Compile Include="A09_Reflection\ProductDto.cs" />
     <Compile Include="A09_Reflection\SiteDto.cs" />
+    <Compile Include="FeatureToggleService.cs" />
     <Compile Include="MinimalContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
