@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="A01_Generics\A01_Generics_DemoTests.cs" />
     <Compile Include="A04_Dictionary\A04_DictionaryTests.cs" />
+    <Compile Include="A06_Cache\CacheManagerTests.cs" />
     <Compile Include="FeatureToggleHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
