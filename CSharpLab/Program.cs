@@ -8,6 +8,8 @@ using CSharpLab.A06_Cache;
 using CSharpLab.A07_Task;
 using CSharpLab.A08_Attributes;
 using CSharpLab.A09_Reflection;
+using CSharpLab.A10_Stream;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,8 @@ namespace CSharpLab
             //A06_Cache_Demo();
             //A07_Task_Demo();
             //A08_Attributes_Demo();
-            A09_Reflection_Demo();
+            //A09_Reflection_Demo();
+            A10_Stream_Demo();
             //var container = new MinimalContainer();
             //container.Register<IWelcomer, Welcomer>();
             //container.Register<IWriter, ConsoleWriter>();
@@ -136,7 +139,15 @@ namespace CSharpLab
             a.Demo2();
             a.Demo3();
         }
+
+        private static void A10_Stream_Demo()
+        {
+          
+            var a = new A10_Stream_Demo();
+            a.Test();
         
+        }
+
     }
 
     public class Student
