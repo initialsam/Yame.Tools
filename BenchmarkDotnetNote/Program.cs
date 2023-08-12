@@ -1,13 +1,15 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
+using System.Text;
+
 namespace BenchmarkDotnetNote
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<VS>();
+            var summary = BenchmarkRunner.Run<Test>();
         }
     }
     /// <summary>
@@ -109,6 +111,63 @@ namespace BenchmarkDotnetNote
 
             return r;
         }
+    }
+
+    [MemoryDiagnoser]
+    public class Test
+    {
+        private string _pwd = "Password123!";
+        [Benchmark]
+        public string MaskForString()
+        {
+            var mask1 = _pwd.Substring(3, 0);
+            //var mask2 = _pwd.Substring(_pwd.Length-1);
+            var astersLength = _pwd.Length - 3;
+            for (int i = 0; i < astersLength; i++)
+            {
+                mask1 += '*';
+            }
+
+            return mask1;
+
+        }
+        [Benchmark]
+        public string MaskStringBuilderString()
+        {
+            var mask1 = _pwd.Substring(3, 0);
+            //var mask2 = _pwd.Substring(_pwd.Length-1);
+            var astersLength = _pwd.Length - 3;
+            var sb = new StringBuilder(mask1);
+            for (int i = 0; i < astersLength; i++)
+            {
+                sb.Append('*');
+            }
+
+            return sb.ToString();
+
+        }
+        [Benchmark]
+        public string MaskNewString()
+        {
+            var mask1 = _pwd.Substring(3, 0);
+            //var mask2 = _pwd.Substring(_pwd.Length-1);
+            var astersLength = _pwd.Length - 3;
+            var asters = new string('*', astersLength);
+
+            return mask1 + asters;
+
+        }
+        [Benchmark]
+        public string MaskStringCreate()
+        {
+            return string.Create(_pwd.Length, _pwd, (span, value) =>
+            {
+                value.AsSpan().CopyTo(span);
+                //var b = _pwd.Length - 1;
+                span[3..].Fill('*');
+            });
+        }
+       
     }
   
 }

@@ -86,6 +86,27 @@ namespace Yame.FeatureTests
             act = GetAct(o);
             act.Should().Be("invalid");
 
+
+            var a = "b";
+            var b = "a";
+            switch (b)
+            {
+                //case a: 不能這樣寫 可以改寫
+                case string b1 when b1 == a:
+                    Console.WriteLine(b);
+                    break;
+                default:
+                    Console.WriteLine("default");
+                    break;
+            }
+            var c = b switch
+            {
+                "a" => "gg",
+                //a =>不能這樣寫 可以改寫
+                string b1 when b1 == a => "ba",
+                _ => "default"
+            };
+
             static string GetAct(object o)
             {
                 return o switch
