@@ -103,7 +103,8 @@ namespace Yame.FeatureTests
             {
                 "a" => "gg",
                 //a =>不能這樣寫 可以改寫
-                string b1 when b1 == a => "ba",
+                //string b1 when b1 == a => "ba",
+                _ when b == a => "ba",
                 _ => "default"
             };
 
